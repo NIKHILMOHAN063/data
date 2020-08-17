@@ -5,12 +5,19 @@ var userSchema=new mongoose.Schema({
        type: Number,
        required:true
     },
-    name: {
+    firstname: {
         type:String,
         required:true
     },
-    age :Number,
-    mobile : String
+    lastname: {
+        type:String,
+        required:true
+    },
+    age: Number,
+    mobile : 
+    { type:String,
+      required:true
+    }
 })
 
 module.exports = mongoose.model("user",userSchema);

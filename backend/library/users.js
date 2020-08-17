@@ -29,10 +29,4 @@ module.exports={
                cb(null,user);
          });
     },
-    updateuser:(obj)=>{
-
-    },
-    deleteuser:(id)=>{
-
-    }
 }
