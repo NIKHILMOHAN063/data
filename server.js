@@ -1,19 +1,27 @@
 var express=require('express');
-var app=express();
+var path = require('path');
+var fs = require('fs');
+const mongoose = require('mongoose');
 var dbconnect=require("./backend/dbconnect");
 var config =require("./backend/library/config");
 var users=require("./backend/library/users");
-//middle ware
+var app=express();
+
 app.use(express.static('frontend'));
 app.use(express.json());
 app.use(express.urlencoded({extended: true}));
-
 dbconnect.connect((mssg)=>{
-    console.log(mssg);
+    console.log('connected sucessfully');});
+
+app.get('/:pagename', (req, res)=>{
+    var pn = req.params.pagename;
+    var pageFilePath = path.join(__dirname, 'frontend', 'html', pn+".html");
+    console.log(pageFilePath);
+    if(!fs.existsSync(pageFilePath))
+        res.sendFile(path.join(__dirname, 'frontend', 'html', "404.html"));
+    else
+        res.sendFile(pageFilePath);
 });
-app.get("/",(req,res)=>{
-    res.sendFile(__dirname+"/frontend/html/home.html");
-})
 
 app.get("/api/users",(req,res)=>{   
      users.getallusers((err,data)=>{
@@ -22,6 +30,7 @@ app.get("/api/users",(req,res)=>{
          res.json(data);
      })
 })
+
 app.post("/",(req,res)=>{
     console.log(req.body);
       res.redirect("/");
@@ -46,8 +55,6 @@ app.post('/api/users/create',(req,res)=>{
        res.redirect("/");
 })
 
-
-////////////////////////////////////////////////////////////////////////////////////////////
 app.listen(config.port,()=>{
-    console.log("SERVER LISTENING ON PORT"+config.port);
+    console.log("Site running on http://localhost:"+config.port+"/home");
 })

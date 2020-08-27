@@ -28,5 +28,11 @@ module.exports={
                else
                cb(null,user);
          });
+    },
+    updateuser:(obj)=>{
+
+    },
+    deleteuser:(id)=>{
+
     }
 }

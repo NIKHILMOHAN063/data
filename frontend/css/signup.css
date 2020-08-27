@@ -1,0 +1,24 @@
+body{
+    margin-top: 50px;
+    margin-left: 20px;
+    background-color: #dfeff7;
+}
+
+
+
+th,tr,td{
+   border : 2px solid black;
+   border-collapse: collapse;
+}
+label,input{
+    padding: 0px !important;
+    margin:0px !important;
+}
+input{margin-bottom: 4px !important;}
+td{ padding:6px 10px;}
+th{ text-align: center;}
+
+#main{float: left;}
+
+#table{float: left; 
+       margin-left: 400px;}

@@ -3,7 +3,7 @@ var config=require("./library/config");
 module.exports.connect =(cb)=>{
     var options={ useUnifiedTopology: true, useNewUrlParser: true,  useCreateIndex: true,
     };
-    mongoose.connect(config.db_connectionstring,options,(err)=>{
+    mongoose.connect('mongodb+srv://nikhil_mohan:nikhilmongo@cluster0.ooac4.mongodb.net/user?retryWrites=true&w=majority',options,(err)=>{
                if(err)
                console.log("ERROR"+err.message);
                else

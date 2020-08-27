@@ -2,9 +2,12 @@ $(function(){
     $("#submit").on("click",()=>{
         var jsondata={
             id:$("#_id").val(),
-            name:$("#name").val(),
+            firstname:$("#firstname").val(),
+            lastname:$("#lastname").val(),
             age:$("#age").val(),
-            mobile:$("#mobile").val()
+            mobile:$("#mobile").val(),
+            email:$("#email").val(),
+            password:$("#password").val(),
           }
           $.ajax({
               type:"post",
